@@ -4,6 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
+
+/*
+	Royal Goods Application
+ */
 @SpringBootApplication
 @EnableJpaAuditing // Enables JPA Auditing
 public class RoyalGoodsApplication {
