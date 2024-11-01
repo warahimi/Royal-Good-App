@@ -16,6 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/product")
+//@CrossOrigin(origins = "http://localhost:5173") // Allow requests from the React app
 @RequiredArgsConstructor
 public class ProductController {
     private final ProductService productService;
@@ -32,12 +33,12 @@ public class ProductController {
     @GetMapping
     public ResponseEntity<List<ProductResponse>> getAllProducts()
     {
-        return new ResponseEntity<>(productService.getAllProducts(), HttpStatus.FOUND);
+        return new ResponseEntity<>(productService.getAllProducts(), HttpStatus.OK);
     }
     @GetMapping("/{id}")
     public ResponseEntity<ProductResponse> getProductById(@PathVariable long id)
     {
-        return new ResponseEntity<>(productService.findProductById(id), HttpStatus.FOUND);
+        return new ResponseEntity<>(productService.findProductById(id), HttpStatus.OK);
     }
     @PutMapping("/update/{id}")
     public ResponseEntity<ProductResponse> updateProduct(@PathVariable long id, @RequestBody ProductRequest productRequest)
@@ -74,5 +75,4 @@ public class ProductController {
             return ResponseEntity.status(500).body("Failed to delete file.");
         }
     }
-
 }
